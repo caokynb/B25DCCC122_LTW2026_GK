@@ -37,7 +37,6 @@ const ProductList = ({ products, onStockChange, onDeleteProduct }) => {
   const handleQueryShift = (event) => setQuery(event.target.value);
   const handleCategoryChange = (event) => setCategory(event.target.value);
   const normalizedQuery = query.trim().toLowerCase();
-  const hasFilter = normalizedQuery.length > 0 || category !== 'all';
   const filteredProducts = products.filter((product) => (
     product.name.toLowerCase().includes(normalizedQuery)
     && (category === 'all' || product.category === category)
@@ -58,7 +57,7 @@ const ProductList = ({ products, onStockChange, onDeleteProduct }) => {
         onQueryChange={handleQueryShift}
         onCategoryChange={handleCategoryChange}
       />
-      {hasFilter && <p>Tìm thấy {filteredProducts.length} sản phẩm</p>}
+      <p>Tìm thấy {filteredProducts.length} sản phẩm</p>
       <ProductTable
         products={filteredProducts}
         onStockChange={onStockChange}
