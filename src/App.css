@@ -1,38 +1,357 @@
-.App {
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #808080;
+  color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.4;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button,
+input,
+select {
+  border-radius: 0;
+}
+
+button {
+  padding: 0.35rem 0.7rem;
+  border: 2px outset #ffffff;
+  background: #c0c0c0;
+  color: #000000;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background: #dedede;
+}
+
+button:active:not(:disabled) {
+  border-style: inset;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  color: #707070;
+}
+
+a {
+  color: #000000;
+}
+
+a:hover {
+  color: #000000;
+  text-decoration: underline;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: 1.25rem;
+}
+
+.site-frame {
+  width: min(100%, 1050px);
+  min-height: calc(100vh - 2.5rem);
+  margin: 0 auto;
+  border: 4px outset #dfdfdf;
+  background: #c0c0c0;
+  box-shadow: 5px 5px 0 #404040;
+}
+
+.site-header {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  min-height: 100px;
+  padding: 1rem 1.5rem;
+  border-bottom: 3px outset #dfdfdf;
+  background: #000080;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.site-brand p {
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.site-title {
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-weight: bold;
+  letter-spacing: 0.12em;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.site-subtitle {
+  margin-top: 0.35rem !important;
+  color: #e0e0e0;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+}
+
+.main-nav {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.8rem 1rem;
+  border-bottom: 2px inset #ffffff;
+  background: #c0c0c0;
 }
 
-.App-link {
-  color: #61dafb;
+.main-nav a {
+  padding: 0.35rem 0.85rem;
+  border: 2px outset #ffffff;
+  background: #c0c0c0;
+  color: #000000;
+  font-weight: bold;
+  text-decoration: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.main-nav a:hover {
+  background: #dedede;
+  color: #000000;
+}
+
+.main-nav a.active {
+  border-style: inset;
+  color: #800000;
+  font-weight: bold;
+}
+
+.page-content {
+  width: min(100% - 2rem, 920px);
+  min-height: 360px;
+  margin: 1.25rem auto;
+  padding: clamp(1rem, 3vw, 1.75rem);
+  border: 2px inset #ffffff;
+  background: #c0c0c0;
+  box-shadow: inset 1px 1px 0 #808080;
+}
+
+h1 {
+  margin: 0 0 1rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 2px solid #808080;
+  color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+}
+
+section > p {
+  margin: 0;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid #808080;
+  background: #dfdfdf;
+}
+
+section > p + p {
+  border-top: 0;
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: end;
+  margin: 1.25rem 0;
+  padding: 0.85rem;
+  border: 2px groove #ffffff;
+  background: #c0c0c0;
+}
+
+.field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.field label {
+  color: #000000;
+  font-weight: bold;
+}
+
+.field input,
+.field select {
+  min-width: 220px;
+  padding: 0.45rem;
+  border: 2px inset #808080;
+  background: #ffffff;
+  color: #000000;
+}
+
+.field input:focus,
+.field select:focus,
+.quantity-control input:focus {
+  outline: 2px solid #000080;
+  outline-offset: 1px;
+}
+
+.product-form {
+  display: grid;
+  gap: 1rem;
+  width: min(100%, 520px);
+  padding: 1rem;
+  border: 2px groove #ffffff;
+  background: #c0c0c0;
+}
+
+.product-form button[type='submit'] {
+  justify-self: start;
+  border: 2px outset #ffffff;
+  background: #c0c0c0;
+  color: #000000;
+  font-weight: bold;
+}
+
+.product-table {
+  width: 100%;
+  border: 2px ridge #808080;
+  border-collapse: collapse;
+  background: #ffffff;
+  font-size: 0.94rem;
+}
+
+.product-table th,
+.product-table td {
+  padding: 0.6rem;
+  border: 1px solid #808080;
+  text-align: left;
+}
+
+.product-table th {
+  border-bottom: 2px solid #000000;
+  background: #000080;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.product-table tbody tr:nth-child(even) {
+  background: #dfdfdf;
+}
+
+.product-table tbody tr:hover {
+  background: #b8c8df;
+}
+
+.actions {
+  min-width: 270px;
+  white-space: nowrap;
+}
+
+.quantity-control {
+  display: inline-grid;
+  margin-right: 0.35rem;
+  vertical-align: middle;
+}
+
+.quantity-control input {
+  width: 4.5rem;
+  padding: 0.3rem;
+  border: 2px inset #808080;
+  background: #ffffff;
+  color: #000000;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+.actions .delete-button {
+  color: #800000;
+}
+
+.low-stock,
+.form-error {
+  color: #800000;
+  font-weight: bold;
+}
+
+.empty-row {
+  padding: 1.4rem !important;
+  text-align: center !important;
+}
+
+.notice {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+  padding: 0.7rem 0.9rem;
+  border: 2px outset #ffffff;
+  background: #dfdfdf;
+  color: #000000;
+}
+
+.notice button {
+  padding: 0 0.35rem;
+  border: 2px outset #ffffff;
+  background: #c0c0c0;
+  font-size: 1.25rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 700px) {
+  .app-shell {
+    padding: 0.5rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .site-frame {
+    min-height: calc(100vh - 1rem);
+    box-shadow: 3px 3px 0 #404040;
+  }
+
+  .site-header {
+    min-height: 88px;
+    padding: 0.8rem;
+  }
+
+  .site-subtitle {
+    font-size: 0.68rem;
+  }
+
+  .page-content {
+    width: calc(100% - 1rem);
+    padding: 0.85rem;
+  }
+
+  .product-table {
+    font-size: 0.78rem;
+  }
+
+  .product-table th,
+  .product-table td {
+    padding: 0.4rem 0.3rem;
+  }
+
+  .actions {
+    min-width: 250px;
+  }
+
+  .quantity-control {
+    margin-right: 0.15rem;
+  }
+
+  .quantity-control input {
+    width: 3.5rem;
   }
 }
